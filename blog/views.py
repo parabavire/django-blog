@@ -9,4 +9,4 @@ class PublicationListView(ListView):
 
 class PublicationDetailView(DetailView):
     model = Publication
-    template_name = "publications-detail.html"
+    template_name = "publication-detail.html"
