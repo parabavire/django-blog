@@ -6,4 +6,6 @@
         <p>{{ publication.author }}</p>
         <p>{{ publication.body }}</p>
     </article>
+    <!-- link to update a publication -->
+    <a href="{% url 'publication-update' publication.pk %}">Editar</a>
 {% endblock content %}
