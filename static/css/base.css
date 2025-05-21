@@ -1,0 +1,9 @@
+header h1 a {
+    color:red;
+}
+
+.macondo-regular {
+  font-family: "Macondo", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
