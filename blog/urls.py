@@ -2,8 +2,9 @@ from django.urls import path
 from .views import (
                     PublicationListView,
                     PublicationDetailView,
-                    PublicationCreateView, #new
-                    PublicationUpdateView
+                    PublicationCreateView,
+                    PublicationUpdateView,
+                    PublicationDeleteView, #new
                     )
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path("publication/<int:pk>/", PublicationDetailView.as_view(), name="publication-detail"), #new
     path("publication/create/", PublicationCreateView.as_view(), name="publication-create"), #new
     path("publication/<int:pk>/update/", PublicationUpdateView.as_view(), name="publication-update"), #new
+    path("publication/<int:pk>/delete/", PublicationDeleteView.as_view(), name="publication-delete"), #new
 ]
