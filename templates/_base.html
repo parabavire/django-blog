@@ -23,6 +23,10 @@
    </header>
     {% if user.is_authenticated %}
         <p>Hola {{ user.username }}!</p>
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">logout</button>
+        </form>
     {% else %}
         <p>Hola! No estás logueado. Inicia sesión a continuación</p>
         <a href="{% url 'login' %}">Log In</a>

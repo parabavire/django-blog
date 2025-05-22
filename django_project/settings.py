@@ -126,3 +126,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Redirect to home URL after login
 LOGIN_REDIRECT_URL = "publications-list" #new
+
+# Redirect to home URL after logout
+LOGOUT_REDIRECT_URL = "publications-list" #new
