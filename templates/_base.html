@@ -30,6 +30,7 @@
     {% else %}
         <p>Hola! No estás logueado. Inicia sesión a continuación</p>
         <a href="{% url 'login' %}">Log In</a>
+        <a href="{% url 'signup' %}">Sign Up</a>
     {% endif %}
    <div>
         {% block content %}

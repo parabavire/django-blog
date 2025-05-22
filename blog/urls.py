@@ -15,5 +15,5 @@ urlpatterns = [
     path("publication/<int:pk>/update/", PublicationUpdateView.as_view(), name="publication-update"), #new
     path("publication/<int:pk>/delete/", PublicationDeleteView.as_view(), name="publication-delete"), #new
     path("admin/", admin.site.urls), #sugerido por deepseek
-    path("accounts/", include('django.contrib.auth.urls')), #sugerido por deepseek
+    #path("accounts/", include('django.contrib.auth.urls')), #sugerido por deepseek/va en urls de proyeco base
 ]
