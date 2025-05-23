@@ -1,15 +1,50 @@
 {% extends '_base.html' %}
 
 {% block content %}
-    <h2>Publications</h2>
-    {% for post in publication_list %}
-        <div>
-            <ul>
-                <li>
-                    <h3><a href="{% url 'publication-detail' post.pk %}"> {{ post.title }}</a></h3>
-                    <p>Author: {{ post.author }}</p>
-                </li>
-            </ul>
+    <div class="publication-list-container">
+        <h2>Publicaciones</h2>
+        <div class="mb-4">
+            <a href="{% url 'publication-create' %}" class="btn btn-success">
+                <i class="bi bi-plus-circle"></i> Nueva Publicación
+            </a>
         </div>
-    {% endfor %}
-{% endblock content %}
+
+        {% for post in publication_list %}
+            <div class="publication-item card mb-3">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <a href="{% url 'publication-detail' post.pk %}">{{ post.title }}</a>
+                    </h3>
+                    
+                    <p class="card-subtitle mb-2 text-muted">
+                        <small>Publicado por: {{ post.author.username }} | {{ post.created_at|date:"d M Y" }}</small>
+                    </p>
+                    
+                    <p class="card-text">{{ post.content|truncatechars:150 }}</p>
+
+                    {% if user.is_authenticated and post.author == request.user %}
+                        <div class="btn-group">
+                            <a href="{% url 'publication-update' post.pk %}" class="btn btn-sm btn-outline-primary">
+                                <i class="bi bi-pencil"></i> Editar
+                            </a>
+                            <a href="{% url 'publication-delete' post.pk %}" class="btn btn-sm btn-outline-danger">
+                                <i class="bi bi-trash"></i> Borrar
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            <div class="alert alert-info">
+                No hay publicaciones disponibles
+            </div>
+        {% endfor %}
+
+        <!-- Botón de volver (redundante pero opcional) -->
+        <div class="mt-4">
+            <a href="{% url 'publications-list' %}" class="btn btn-secondary">
+                <i class="bi bi-arrow-repeat"></i> Actualizar lista
+            </a>
+        </div>
+    </div>
+{% endblock %}
